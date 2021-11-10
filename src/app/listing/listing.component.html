@@ -1,0 +1,40 @@
+
+
+
+<div style="margin: 30px; width: 100px; padding: 10px;">
+  <h4>Choose category:</h4>
+<select [(ngModel)]='categorySelected' (ngModelChange)='onCategorySelectedEvent($event)'>
+    <option *ngFor='let category of categories$' [value]='category.id'>
+      {{category.name}}
+    </option>
+</select>
+
+</div>
+<h3> List of movies</h3>
+<div class="container">
+<table class="table">
+  <caption></caption>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let movie of movies$">
+      <td>{{movie.name}}</td>
+      <!-- <td>{{listing.targetDate | date}}</td> -->
+       <td>{{movie.description}}</td>
+       <td>
+        <button (click)="detailsOdMovie(movie)" class="btn btn-success">Details</button>
+
+    </td>
+   
+    </tr> 
+    
+
+
+  </tbody>
+</table>
+</div>
