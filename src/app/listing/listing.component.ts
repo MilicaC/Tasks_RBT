@@ -2,20 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Category } from '../category.model';
 import { Movie } from '../movie.model';
+import { Comment} from '../comment.model';
 import { DataService } from '../service/data.service';
 
 
 
-export class List{
-  constructor(
-    public id: number,
-    public description: string,
-    public done: boolean,
-    public targetDate: Date
-  ){
-  }
-
-}
 
 
 @Component({
@@ -28,16 +19,19 @@ export class ListingComponent implements OnInit {
   
   categories$: Category[];
   movies$: Movie[];
+  comments$: Comment[];
   categorySelected: number;
-  
+  movieID: number;
 
   constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit() {
+
     return this.dataService.getCategories()
     .subscribe(data => this.categories$ = data);
   }
 
+ 
 
   onCategorySelectedEvent(categoryIdSelected:any): void{
     this.dataService.getMoviesByParametar(categoryIdSelected)
@@ -45,9 +39,9 @@ export class ListingComponent implements OnInit {
   }
 
   detailsOdMovie(movie){
-    var movieID = movie.id;
-    console.log('treba sada otvoriti blog page stranicu');
-    this.router.navigate(['post', movieID]);
+    console.log(movie.id + " ovo je proslednjeno sa fprme");
+    this.dataService.updateMovieId(movie);
+    this.router.navigate(['post', movie.id]);
   }
 
 
