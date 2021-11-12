@@ -30,9 +30,10 @@ export class DataService {
     return this.http.get<Movie[]>(this.movieUrl, {params: param1});
   }
 
-  getCommentsByParametar(movieIdSelected: string){
-    let param1 = new HttpParams().set('movieId', movieIdSelected)
-    return this.http.get<Comment[]>(this.commentUrl, {params: param1});
+  getCommentsByParametar(movieID: string){
+    let param1 = new HttpParams().set('movieId', movieID);
+    console.log('getCommentByParameter : ' + param1 );
+    return this.http.get<Comment[]>('https://5fe8885b2e12ee0017ab47c0.mockapi.io/api/v1/movies/'+movieID+'/comments', {params: param1});
 
   }
 

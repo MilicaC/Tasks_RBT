@@ -7,22 +7,28 @@
   <title>Document</title>
 </head>
 <body>
-  <div class="container">
-  <div style="width: 500px; float:left; height:400px; margin:10px">
+ 
+  <div class="div1">
     <h3>Movie name:</h3> {{movie.name}}
     <h3>Description:</h3> <p>{{movie.description}}</p>
   </div>
-  <div style="width: 500px; float:right; height:400px;  margin:10px">
+  <div class="div2">
     <h3>Image:</h3> <img src="{{movie.imageUrl}}">
   </div>
-  <form>
-    <br>
-    <textarea rows = "5" cols = "60" name = "description" required>
-       Enter your comment...
+  <div class="div3">
+    <h3>Comments:</h3>
+      <p *ngFor="let comm of comments$" >{{ comm.text }}</p>
+  </div>
+  <div class="div4">
+     <form #userCom="ngForm" (ngSubmit)="onSubmit(userCom.value)">
+    <label><h3>Enter your comment:</h3></label>
+    <textarea rows = "3" cols = "60" name = "text" ngModel>
     </textarea><br>
-    <button (click)=comment() class="btn btn-success">Comment</button>
+    <button type="submit" class="btn btn-success">Comment</button>
  </form> 
-</div> 
+
+  </div>
+ 
   
 </body>
 </html>

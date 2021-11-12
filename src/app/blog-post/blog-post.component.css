@@ -1,3 +1,32 @@
 p{
     text-align: justify;
+    margin: 5px 5px 5px 5px;
+}
+
+.div1{
+    /* background-color: bisque; */
+    float:left;
+    width: 33.33%;
+    height: 380px;
+
+}
+
+.div2{
+    /* background-color: blueviolet; */
+    margin: 0 auto;
+    width: 33.33%;
+    height: 380px;
+}
+
+.div3{
+    /* background-color: coral; */
+    float: right;
+    width: 33.33%;
+    height: 250px;
+    position: absolute;
+    margin-left: 0px;
+}
+.div4{
+    float: right;
+    width: 33.33%;
 }
