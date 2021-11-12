@@ -20,13 +20,17 @@
       <p *ngFor="let comm of comments$" >{{ comm.text }}</p>
   </div>
   <div class="div4">
-     <form #userCom="ngForm" (ngSubmit)="onSubmit(userCom.value)">
+     <form #userCom="ngForm" (ngSubmit)="onSubmit(userCom.value, userCom)">
     <label><h3>Enter your comment:</h3></label>
-    <textarea rows = "3" cols = "60" name = "text" ngModel>
-    </textarea><br>
+    <!-- <textarea rows = "3" cols = "60" name = "text" ngModel>
+    </textarea><br> -->
     <button type="submit" class="btn btn-success">Comment</button>
  </form> 
 
+  </div>
+  <div class="div5">
+    <iframe width="380" height="280" src="{{trailer.videoUrl}}">
+    </iframe>
   </div>
  
   

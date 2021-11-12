@@ -17,7 +17,8 @@ import { DataService } from '../service/data.service';
 export class ListingComponent implements OnInit {
 
   
-  categories$: Category[];
+  categories$ = this.dataService.getCategories()
+  .subscribe(data => this.categories$ = data);
   movies$: Movie[];
   comments$: Comment[];
   categorySelected: number;
@@ -27,8 +28,13 @@ export class ListingComponent implements OnInit {
 
   ngOnInit() {
 
-    return this.dataService.getCategories()
-    .subscribe(data => this.categories$ = data);
+    return this.dataService.getMovies()
+    .subscribe(data => this.movies$ = data);
+
+  }
+
+  allMovies(){
+    this.ngOnInit();
   }
 
  

@@ -11,7 +11,7 @@ import { RouteGuardService } from './service/route-guard.service';
 
 
 const routes: Routes = [
-  {path: '', component: LoginComponent},
+  {path: '', component: ListingComponent},
   {path: 'login', component: LoginComponent},
   {path: 'listing', component: ListingComponent},
   {path: 'post/:movie', component: BlogPostComponent},

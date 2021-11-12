@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpParams} from '@angular/common/http';
 import { Movie } from '../movie.model';
 import { text } from '@angular/core/src/render3';
+import { Trailer } from '../trailer.model';
 
 
 @Injectable({
@@ -18,6 +19,7 @@ export class DataService {
   movieUrl= 'https://5fe8885b2e12ee0017ab47c0.mockapi.io/api/v1/movies';
   categoryUrl='https://5fe8885b2e12ee0017ab47c0.mockapi.io/api/v1/categories';
   commentUrl = 'https://5fe8885b2e12ee0017ab47c0.mockapi.io/api/v1/movies/4/comments';
+  trailerUrl = 'https://imdb-api.com/en/API/YouTubeTrailer/k_b276hgve/tt0120338';
 
   constructor(private http : HttpClient) { }
 
@@ -32,10 +34,15 @@ export class DataService {
 
   getCommentsByParametar(movieID: string){
     let param1 = new HttpParams().set('movieId', movieID);
-    console.log('getCommentByParameter : ' + param1 );
     return this.http.get<Comment[]>('https://5fe8885b2e12ee0017ab47c0.mockapi.io/api/v1/movies/'+movieID+'/comments', {params: param1});
-
+    
   }
+
+  getTrailerByParametar(imdbId: string){
+    let param1 = new HttpParams().set('imDbId', imdbId);
+    return this.http.get<Trailer>('https://imdb-api.com/en/API/YouTubeTrailer/k_b276hgve/'+ imdbId, {params: param1});
+  }
+
 
   getCategories(){
     return this.http.get<Category[]>(this.categoryUrl);
@@ -43,6 +50,10 @@ export class DataService {
 
   getComments(){
     return this.http.get<Comment[]>(this.commentUrl);
+  }
+
+  getMovies(){
+    return this.http.get<Movie[]>(this.movieUrl);
   }
 
 }

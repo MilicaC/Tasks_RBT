@@ -30,3 +30,11 @@ p{
     float: right;
     width: 33.33%;
 }
+.div5{
+    position:absolute;
+   top:70px;
+   right:40px;
+   width: 400px;
+   height: 300px;
+
+}
