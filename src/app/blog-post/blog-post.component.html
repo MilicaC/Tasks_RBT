@@ -13,6 +13,7 @@
   <div class="div1">
     <h3>Movie name:</h3> {{movie.name}}
     <h3>Description:</h3>
+    <p>{{trailerURL}}</p>
     <p>{{movie.description}}</p>
   </div>
   <div class="div2">
@@ -36,6 +37,7 @@
   <div class="div5">
 
     <iframe width="300px" height="200px" [src]="trailerURL | safe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    
     </iframe>
   </div>
 

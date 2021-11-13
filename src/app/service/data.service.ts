@@ -34,9 +34,8 @@ export class DataService {
     let param1 = new HttpParams().set('categoryId', categoryIdSelected)
     return this.http.get<Movie[]>(this.movieUrl, {params: param1});
   }
-  getVideoUrl(imdbId: string){
-    let param1 = new HttpParams().set('imDbId', imdbId)
-    return 'https://www.youtube.com/embed/' + imdbId;
+  getVideoUrl(trailer: Trailer){
+    return 'https://www.youtube.com/embed/' + trailer.videoId;
   }
 
   getCommentsByParametar(movieID: string){

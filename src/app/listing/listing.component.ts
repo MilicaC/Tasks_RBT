@@ -49,14 +49,11 @@ export class ListingComponent implements OnInit {
  
 
   onCategorySelectedEvent(categoryIdSelected:any): void{
-    console.log(categoryIdSelected + 'ovo je taj event koji je porsldjen');
     this.dataService.getMoviesByParametar(categoryIdSelected)
     .subscribe(data => this.movies$ = data);
-    console.log(this.movies$ + "ovo je lista filmova");
   }
 
   detailsOdMovie(movie:Movie){
-    console.log(movie.id + " ovo je proslednjeno sa fprme");
     this.dataService.updateMovieId(movie);
     this.router.navigate(['post', movie.id]);
   }

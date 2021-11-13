@@ -24,18 +24,23 @@ export class Auth {
 
   public login() {
     // Call the show method to display the widget.
+    console.log('izvrseno login');
     this.lock.show();
+    console.log('izvrseno login 2');
   };
 
   public authenticated() {
     // Check if there's an unexpired JWT
     // This searches for an item in localStorage with key == 'id_token'
+    console.log('izvrseno authenticated')
     return tokenNotExpired();
   };
 
   public logout() {
     // Remove token from localStorage
+    console.log('izvrseno logout')
     localStorage.removeItem('id_token');
     localStorage.removeItem('profile');
+    console.log('izbrisan token i profil')
   };
 }

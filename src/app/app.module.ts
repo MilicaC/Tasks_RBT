@@ -33,7 +33,8 @@ import { SafePipe } from './safe.pipe';
     BrowserModule,
     AppRoutingModule,
     FormsModule, 
-    HttpClientModule
+    HttpClientModule,
+    
   ],
   providers: [DataService, AUTH_PROVIDERS, Auth],
   bootstrap: [AppComponent]

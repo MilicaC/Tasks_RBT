@@ -16,8 +16,6 @@ export class BlogPostComponent implements OnInit {
     trailer;
 
     trailerURL;
-    trueUrl:string;
-    trueURL:string;
 
   constructor(private dataService: DataService, private http: HttpClient) { }
 
@@ -28,12 +26,10 @@ export class BlogPostComponent implements OnInit {
     .subscribe(data => this.comments$ = data);
 
     this.dataService.getTrailersByParametar(this.movie.imdbId)
-    .subscribe(data => this.trailer = data);
+    .subscribe(data => {this.trailer = data; this.trailerURL = "https://www.youtube.com/embed/"+this.trailer.videoId});
 
-    this.trailerURL = this.dataService.getVideoUrl(this.movie.imdbId);
-     
+    
   }
-  
 
   onSubmit(data, userCom: NgForm){
     console.log(data);
