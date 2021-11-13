@@ -63,9 +63,7 @@ export class DataService {
     return this.http.get<Movie[]>(this.movieUrl);
   }
 
-  getTrailers(){
-    return this.http.get<Trailer[]>(this.trailerUrl);
-  }
+
 
 
 }
