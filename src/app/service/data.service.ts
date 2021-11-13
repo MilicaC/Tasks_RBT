@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Category } from '../category.model';
 import { Comment } from '../comment.model';
-import { BehaviorSubject } from 'rxjs';
+import {  BehaviorSubject, Observable } from 'rxjs';
+import { of } from 'rxjs';
 import { HttpClient, HttpParams} from '@angular/common/http';
 import { Movie } from '../movie.model';
 import { text } from '@angular/core/src/render3';
@@ -27,9 +28,15 @@ export class DataService {
     this.content.next(movie);
   }
 
+  
+
   getMoviesByParametar(categoryIdSelected: string){
     let param1 = new HttpParams().set('categoryId', categoryIdSelected)
     return this.http.get<Movie[]>(this.movieUrl, {params: param1});
+  }
+  getVideoUrl(imdbId: string){
+    let param1 = new HttpParams().set('imDbId', imdbId)
+    return 'https://www.youtube.com/embed/' + imdbId;
   }
 
   getCommentsByParametar(movieID: string){
@@ -38,7 +45,7 @@ export class DataService {
     
   }
 
-  getTrailerByParametar(imdbId: string){
+  getTrailersByParametar(imdbId: string){
     let param1 = new HttpParams().set('imDbId', imdbId);
     return this.http.get<Trailer>('https://imdb-api.com/en/API/YouTubeTrailer/k_b276hgve/'+ imdbId, {params: param1});
   }
@@ -55,5 +62,10 @@ export class DataService {
   getMovies(){
     return this.http.get<Movie[]>(this.movieUrl);
   }
+
+  getTrailers(){
+    return this.http.get<Trailer[]>(this.trailerUrl);
+  }
+
 
 }

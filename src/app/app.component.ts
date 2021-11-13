@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Auth }  from './service/auth.service';
 // import { Movie } from './movie.model';
 // import { DataService } from './service/data.service';
 
@@ -11,7 +12,7 @@ export class AppComponent implements OnInit{
 
   
 
-  constructor(){
+  constructor(private auth: Auth){
     
   }
   title = 'blog-app';

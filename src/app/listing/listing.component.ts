@@ -4,6 +4,7 @@ import { Category } from '../category.model';
 import { Movie } from '../movie.model';
 import { Comment} from '../comment.model';
 import { DataService } from '../service/data.service';
+import { MethodCall } from '@angular/compiler';
 
 
 
@@ -16,9 +17,9 @@ import { DataService } from '../service/data.service';
 })
 export class ListingComponent implements OnInit {
 
+  categories$: Category[];
   
-  categories$ = this.dataService.getCategories()
-  .subscribe(data => this.categories$ = data);
+
   movies$: Movie[];
   comments$: Comment[];
   categorySelected: number;
@@ -26,12 +27,20 @@ export class ListingComponent implements OnInit {
 
   constructor(private dataService: DataService, private router: Router) { }
 
+ 
+
   ngOnInit() {
+    
+    this.dataService.getCategories()
+  .subscribe(data => this.categories$ = data);
 
     return this.dataService.getMovies()
     .subscribe(data => this.movies$ = data);
 
   }
+  
+
+
 
   allMovies(){
     this.ngOnInit();

@@ -12,6 +12,10 @@ import { FooterComponent } from './footer/footer.component';
 import { LogoutComponent } from './logout/logout.component';
 import { DataService} from './service/data.service';
 import { BlogPostComponent } from './blog-post/blog-post.component';
+import { AUTH_PROVIDERS } from 'angular2-jwt';
+import { Auth } from './service/auth.service';
+import { SafePipe } from './safe.pipe';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +26,8 @@ import { BlogPostComponent } from './blog-post/blog-post.component';
     MenuComponent,
     FooterComponent,
     LogoutComponent,
-    BlogPostComponent
+    BlogPostComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,
@@ -30,7 +35,7 @@ import { BlogPostComponent } from './blog-post/blog-post.component';
     FormsModule, 
     HttpClientModule
   ],
-  providers: [DataService],
+  providers: [DataService, AUTH_PROVIDERS, Auth],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

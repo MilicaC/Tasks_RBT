@@ -1,38 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
- 
+
   <div class="div1">
     <h3>Movie name:</h3> {{movie.name}}
-    <h3>Description:</h3> <p>{{movie.description}}</p>
+    <h3>Description:</h3>
+    <p>{{movie.description}}</p>
   </div>
   <div class="div2">
     <h3>Image:</h3> <img src="{{movie.imageUrl}}">
   </div>
   <div class="div3">
     <h3>Comments:</h3>
-      <p *ngFor="let comm of comments$" >{{ comm.text }}</p>
+    <p *ngFor="let comm of comments$">{{ comm.text }}</p>
   </div>
   <div class="div4">
-     <form #userCom="ngForm" (ngSubmit)="onSubmit(userCom.value, userCom)">
-    <label><h3>Enter your comment:</h3></label>
-    <textarea rows = "3" cols = "60" name = "text" ngModel>
-    </textarea><br>
-    <button type="submit" class="btn btn-success">Comment</button>
- </form> 
+    <form #userCom="ngForm" (ngSubmit)="onSubmit(userCom.value, userCom)">
+      <label>
+        <h3>Enter your comment:</h3>
+      </label>
 
+      <textarea rows="3" cols="60" name="text" ngModel>
+    </textarea><br>
+      <button type="submit" class="btn btn-success">Comment</button>
+    </form>
   </div>
   <div class="div5">
-    <iframe width="380" height="280" src="{{trailer.videoUrl}}">
+
+    <iframe width="300px" height="200px" [src]="trailerURL | safe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
     </iframe>
   </div>
- 
-  
+
+
 </body>
+
 </html>

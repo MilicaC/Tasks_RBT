@@ -4,7 +4,6 @@ p{
 }
 
 .div1{
-    /* background-color: bisque; */
     float:left;
     width: 33.33%;
     height: 380px;
@@ -12,14 +11,12 @@ p{
 }
 
 .div2{
-    /* background-color: blueviolet; */
     margin: 0 auto;
     width: 33.33%;
     height: 380px;
 }
 
 .div3{
-    /* background-color: coral; */
     float: right;
     width: 33.33%;
     height: 250px;
@@ -33,7 +30,7 @@ p{
 .div5{
     position:absolute;
    top:70px;
-   right:40px;
+   right:120px;
    width: 400px;
    height: 300px;
 

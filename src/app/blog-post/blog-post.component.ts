@@ -2,10 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Comment } from '../comment.model';
 import { DataService } from '../service/data.service';
 import { HttpClient } from '@angular/common/http';
-import { Movie } from '../movie.model';
-import { Observable } from 'rxjs';
 import { NgForm } from '@angular/forms';
-import { Trailer } from '../trailer.model';
+
 
 @Component({
   selector: 'app-blog-post',
@@ -15,8 +13,11 @@ import { Trailer } from '../trailer.model';
 export class BlogPostComponent implements OnInit {
     movie;
     comments$: Comment[];
-    message= "";
-    trailer: Trailer;
+    trailer;
+
+    trailerURL;
+    trueUrl:string;
+    trueURL:string;
 
   constructor(private dataService: DataService, private http: HttpClient) { }
 
@@ -26,12 +27,13 @@ export class BlogPostComponent implements OnInit {
     this.dataService.getCommentsByParametar(this.movie.id)
     .subscribe(data => this.comments$ = data);
 
-    this.dataService.getTrailerByParametar(this.movie.imdbId)
+    this.dataService.getTrailersByParametar(this.movie.imdbId)
     .subscribe(data => this.trailer = data);
-    console.log(this.trailer.videoUrl + 'ovo je video url');
-    
+
+    this.trailerURL = this.dataService.getVideoUrl(this.movie.imdbId);
      
   }
+  
 
   onSubmit(data, userCom: NgForm){
     console.log(data);
