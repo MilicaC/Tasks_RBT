@@ -7,6 +7,7 @@ import { HttpClient, HttpParams} from '@angular/common/http';
 import { Movie } from '../movie.model';
 import { text } from '@angular/core/src/render3';
 import { Trailer } from '../trailer.model';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 
 @Injectable({
@@ -15,7 +16,9 @@ import { Trailer } from '../trailer.model';
 export class DataService {
 
   private content = new BehaviorSubject<Movie>(null);
+  private content2 = new BehaviorSubject(null);
   public share = this.content.asObservable();
+  public share2 = this.content2.asObservable();
 
   movieUrl= 'https://5fe8885b2e12ee0017ab47c0.mockapi.io/api/v1/movies';
   categoryUrl='https://5fe8885b2e12ee0017ab47c0.mockapi.io/api/v1/categories';
@@ -28,6 +31,9 @@ export class DataService {
     this.content.next(movie);
   }
 
+  updateLoggedIn(variable: boolean){
+    this.content2.next(variable);
+  }
   
 
   getMoviesByParametar(categoryIdSelected: string){

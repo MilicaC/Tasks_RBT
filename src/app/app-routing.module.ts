@@ -15,7 +15,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'listing', component: ListingComponent},
   {path: 'post/:movie', component: BlogPostComponent},
-  {path: 'logout', component: LogoutComponent, canActivate:[RouteGuardService]},
+  {path: 'logout', component: LogoutComponent},
   {path: '**', component: ErrorComponent, canActivate:[RouteGuardService]}
 ];
 

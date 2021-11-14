@@ -13,7 +13,6 @@
   <div class="div1">
     <h3>Movie name:</h3> {{movie.name}}
     <h3>Description:</h3>
-    <p>{{trailerURL}}</p>
     <p>{{movie.description}}</p>
   </div>
   <div class="div2">
@@ -27,6 +26,7 @@
     <form #userCom="ngForm" (ngSubmit)="onSubmit(userCom.value, userCom)">
       <label>
         <h3>Enter your comment:</h3>
+        <div class="alert alert-warning" *ngIf='invalid'>You must login!</div>
       </label>
 
       <textarea rows="3" cols="60" name="text" ngModel>
